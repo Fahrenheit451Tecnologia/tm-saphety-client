@@ -4,13 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
-**virtual_operator** | **string** |  | [optional] 
+**virtual_operator** | **string** | MaxLength: 60 | [optional] 
 **creation_date_start** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **creation_date_end** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**event_type** | **string** |  | [optional] 
-**result_status** | **string** |  | [optional] 
-**username** | **string** |  | [optional] 
-**property_value** | **string** |  | [optional] 
+**event_type** | **string** | MaxLength: 100 | [optional] 
+**result_status** | **string** | MaxLength: 100 | [optional] 
+**username** | **string** | MaxLength: 100 | [optional] 
+**property_value** | **string** | MaxLength: 450 | [optional] 
 **offset** | **int** |  | [optional] 
 **number_of_records** | **int** |  | [optional] 
 **sort_field** | **string** |  | [optional] 

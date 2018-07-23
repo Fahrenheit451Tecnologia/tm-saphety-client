@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**publicOutboundDocumentGetPublicDocumentAttachments**](PublicOutboundDocumentApi.md#publicOutboundDocumentGetPublicDocumentAttachments) | **GET** /api/{virtualOperator}/public/outbounddocuments/{id}/attachments | Gets the public outboundDocument attachments
 [**publicOutboundDocumentPublicDocumentShowPDF**](PublicOutboundDocumentApi.md#publicOutboundDocumentPublicDocumentShowPDF) | **GET** /api/{virtualOperator}/public/outbounddocuments/{id}/files/{fileId}/getpdf | Gets the pdf for the public outboundDocument presentation
 [**publicOutboundDocumentRejected**](PublicOutboundDocumentApi.md#publicOutboundDocumentRejected) | **POST** /api/{virtualOperator}/public/outbounddocuments/{id}/rejected | Rejects a outboundDocument
-[**publicOutboundDocumentTriggerTacitlyAcceptance**](PublicOutboundDocumentApi.md#publicOutboundDocumentTriggerTacitlyAcceptance) | **GET** /api/public/outbounddocuments/triggerTacitlyAcceptance | Trigger tacit acceptance validations
 
 
 # **publicOutboundDocumentAccepted**
@@ -24,12 +23,16 @@ Accepts a outboundDocument
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->publicOutboundDocumentAccepted($id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentAccepted($id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentAccepted: ', $e->getMessage(), PHP_EOL;
@@ -42,7 +45,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
@@ -69,13 +72,17 @@ Downloads the selected file
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $file_id = "file_id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->publicOutboundDocumentFileDownload($id, $file_id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentFileDownload($id, $file_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentFileDownload: ', $e->getMessage(), PHP_EOL;
@@ -88,8 +95,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
- **file_id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **file_id** | [**string**](../Model/.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
@@ -107,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicOutboundDocumentGet**
-> object publicOutboundDocumentGet($id, $virtual_operator)
+> \Swagger\Client\Model\PublicDocumentSummaryOutputDto publicOutboundDocumentGet($id, $virtual_operator)
 
 Gets a public outboundDocument
 
@@ -116,12 +123,16 @@ Gets a public outboundDocument
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $virtual_operator = "virtual_operator_example"; // string | 
 
 try {
-    $result = $api_instance->publicOutboundDocumentGet($id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentGet($id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentGet: ', $e->getMessage(), PHP_EOL;
@@ -138,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\PublicDocumentSummaryOutputDto**](../Model/PublicDocumentSummaryOutputDto.md)
 
 ### Authorization
 
@@ -161,13 +172,17 @@ Gets the content of a outboundDocument attachment
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $attachment_id = "attachment_id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->publicOutboundDocumentGetPublicDocumentAttachmentContent($id, $attachment_id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentGetPublicDocumentAttachmentContent($id, $attachment_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentGetPublicDocumentAttachmentContent: ', $e->getMessage(), PHP_EOL;
@@ -181,7 +196,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
  **attachment_id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
@@ -199,7 +214,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicOutboundDocumentGetPublicDocumentAttachments**
-> object publicOutboundDocumentGetPublicDocumentAttachments($id, $virtual_operator)
+> \Swagger\Client\Model\DocumentAttachmentOutputDto publicOutboundDocumentGetPublicDocumentAttachments($id, $virtual_operator)
 
 Gets the public outboundDocument attachments
 
@@ -208,12 +223,16 @@ Gets the public outboundDocument attachments
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->publicOutboundDocumentGetPublicDocumentAttachments($id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentGetPublicDocumentAttachments($id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentGetPublicDocumentAttachments: ', $e->getMessage(), PHP_EOL;
@@ -226,11 +245,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\DocumentAttachmentOutputDto**](../Model/DocumentAttachmentOutputDto.md)
 
 ### Authorization
 
@@ -239,7 +258,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -253,13 +272,17 @@ Gets the pdf for the public outboundDocument presentation
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $file_id = "file_id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->publicOutboundDocumentPublicDocumentShowPDF($id, $file_id, $virtual_operator);
+    $result = $apiInstance->publicOutboundDocumentPublicDocumentShowPDF($id, $file_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentPublicDocumentShowPDF: ', $e->getMessage(), PHP_EOL;
@@ -272,8 +295,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
- **file_id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **file_id** | [**string**](../Model/.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
@@ -300,13 +323,17 @@ Rejects a outboundDocument
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\PublicOutboundDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $data = new \Swagger\Client\Model\BusinessStatusDTO(); // \Swagger\Client\Model\BusinessStatusDTO | 
 
 try {
-    $result = $api_instance->publicOutboundDocumentRejected($id, $virtual_operator, $data);
+    $result = $apiInstance->publicOutboundDocumentRejected($id, $virtual_operator, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentRejected: ', $e->getMessage(), PHP_EOL;
@@ -319,7 +346,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **data** | [**\Swagger\Client\Model\BusinessStatusDTO**](../Model/BusinessStatusDTO.md)|  |
 
 ### Return type
@@ -333,45 +360,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **publicOutboundDocumentTriggerTacitlyAcceptance**
-> object publicOutboundDocumentTriggerTacitlyAcceptance()
-
-Trigger tacit acceptance validations
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\Api\PublicOutboundDocumentApi(new \Http\Adapter\Guzzle6\Client());
-
-try {
-    $result = $api_instance->publicOutboundDocumentTriggerTacitlyAcceptance();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PublicOutboundDocumentApi->publicOutboundDocumentTriggerTacitlyAcceptance: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

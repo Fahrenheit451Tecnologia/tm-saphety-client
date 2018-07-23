@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **template_type** | **string** |  | [optional] 
 **document_type** | **string** |  | [optional] 
 **document_sub_type** | **string** |  | [optional] 
+**include_content** | **bool** |  | [optional] 
 **offset** | **int** |  | [optional] 
 **number_of_records** | **int** |  | [optional] 
 **sort_field** | **string** |  | [optional] 

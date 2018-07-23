@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**emailUserAccept**](EmailUserApi.md#emailUserAccept) | **POST** /api/{virtualOperator}/emailuser/outbounddocuments/{id}/accept | Accepts a outboundDocument
 [**emailUserAcceptEmailUserRegisterToken**](EmailUserApi.md#emailUserAcceptEmailUserRegisterToken) | **GET** /api/{virtualOperator}/emailuser/accepttoken/{token} | Accepts a previously invitation sent to a email user
-[**emailUserChangeEmailUserPassword**](EmailUserApi.md#emailUserChangeEmailUserPassword) | **POST** /api/{virtualOperator}/emailuser/newpassword/{token} | Change an email user password
+[**emailUserConfirmRecoveryPassword**](EmailUserApi.md#emailUserConfirmRecoveryPassword) | **POST** /api/{virtualOperator}/emailuser/newpassword/{token} | Change an email user password
 [**emailUserCountDocuments**](EmailUserApi.md#emailUserCountDocuments) | **GET** /api/{virtualOperator}/emailuser/outbounddocuments/count | 
 [**emailUserGet**](EmailUserApi.md#emailUserGet) | **GET** /api/{virtualOperator}/emailuser | Gets an email user by email
 [**emailUserGetDocumentWithAllDetails**](EmailUserApi.md#emailUserGetDocumentWithAllDetails) | **GET** /api/{virtualOperator}/emailuser/outbounddocuments/{id}/files | Gets a outboundDocument with all associated details
@@ -15,10 +15,12 @@ Method | HTTP request | Description
 [**emailUserGetEmailUserFileContent**](EmailUserApi.md#emailUserGetEmailUserFileContent) | **GET** /api/{virtualOperator}/emailuser/outbounddocuments/{id}/files/{fileId}/content | Gets a file content for an email user
 [**emailUserReject**](EmailUserApi.md#emailUserReject) | **POST** /api/{virtualOperator}/emailuser/outbounddocuments/{id}/reject | Rejects a outboundDocument
 [**emailUserRequestEmailUser**](EmailUserApi.md#emailUserRequestEmailUser) | **POST** /api/{virtualOperator}/emailuser/request | Gets an email user
-[**emailUserResetEmailUserPassword**](EmailUserApi.md#emailUserResetEmailUserPassword) | **POST** /api/{virtualOperator}/emailuser/resetpassword | resets an email user password
+[**emailUserRequestRecoveryPassword**](EmailUserApi.md#emailUserRequestRecoveryPassword) | **POST** /api/{virtualOperator}/emailuser/resetpassword | Resets an email user password
 [**emailUserSearchCompanies**](EmailUserApi.md#emailUserSearchCompanies) | **GET** /api/{virtualOperator}/emailuser/companies | Search companies using search criterias  Default NumberOfRecords&#x3D;25
-[**emailUserSearchCustomers**](EmailUserApi.md#emailUserSearchCustomers) | **GET** /api/{virtualOperator}/emailuser/companies/{companyId}/customers | Gets selected company&#39;s Customer.  Default NumberOfRecords&#x3D;25
-[**emailUserSearchDocuments**](EmailUserApi.md#emailUserSearchDocuments) | **GET** /api/{virtualOperator}/emailuser/outbounddocuments | Search documents as an email user
+[**emailUserSearchCustomers**](EmailUserApi.md#emailUserSearchCustomers) | **GET** /api/{virtualOperator}/emailuser/companies/{companyId}/customers | Gets selected company&#39;s Customers.  Default NumberOfRecords&#x3D;25
+[**emailUserSearchDocuments**](EmailUserApi.md#emailUserSearchDocuments) | **GET** /api/{virtualOperator}/emailuser/outbounddocuments | Search documents
+[**emailUserUpdate**](EmailUserApi.md#emailUserUpdate) | **PUT** /api/{virtualOperator}/emailuser | Updates the email user info
+[**emailUserUpdatePassword**](EmailUserApi.md#emailUserUpdatePassword) | **PUT** /api/{virtualOperator}/emailuser/password | Updates the email user info
 
 
 # **emailUserAccept**
@@ -31,12 +33,16 @@ Accepts a outboundDocument
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserAccept($virtual_operator, $id);
+    $result = $apiInstance->emailUserAccept($virtual_operator, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserAccept: ', $e->getMessage(), PHP_EOL;
@@ -48,8 +54,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
@@ -67,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserAcceptEmailUserRegisterToken**
-> object emailUserAcceptEmailUserRegisterToken($virtual_operator, $token)
+> \Swagger\Client\Model\ResultMessageBoolean emailUserAcceptEmailUserRegisterToken($virtual_operator, $token)
 
 Accepts a previously invitation sent to a email user
 
@@ -76,12 +82,16 @@ Accepts a previously invitation sent to a email user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $token = "token_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserAcceptEmailUserRegisterToken($virtual_operator, $token);
+    $result = $apiInstance->emailUserAcceptEmailUserRegisterToken($virtual_operator, $token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserAcceptEmailUserRegisterToken: ', $e->getMessage(), PHP_EOL;
@@ -93,12 +103,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **token** | **string**|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageBoolean**](../Model/ResultMessageBoolean.md)
 
 ### Authorization
 
@@ -107,12 +117,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **emailUserChangeEmailUserPassword**
-> object emailUserChangeEmailUserPassword($token, $virtual_operator, $user)
+# **emailUserConfirmRecoveryPassword**
+> bool emailUserConfirmRecoveryPassword($token, $virtual_operator, $user)
 
 Change an email user password
 
@@ -121,16 +131,20 @@ Change an email user password
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $token = "token_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $user = new \Swagger\Client\Model\EmailUserDTO(); // \Swagger\Client\Model\EmailUserDTO | 
 
 try {
-    $result = $api_instance->emailUserChangeEmailUserPassword($token, $virtual_operator, $user);
+    $result = $apiInstance->emailUserConfirmRecoveryPassword($token, $virtual_operator, $user);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailUserApi->emailUserChangeEmailUserPassword: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailUserApi->emailUserConfirmRecoveryPassword: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -140,12 +154,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **string**|  |
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **user** | [**\Swagger\Client\Model\EmailUserDTO**](../Model/EmailUserDTO.md)|  |
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
@@ -154,12 +168,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserCountDocuments**
-> object emailUserCountDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field)
+> int emailUserCountDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field)
 
 
 
@@ -168,11 +182,15 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $search_criteria_dto_id = "search_criteria_dto_id_example"; // string | 
-$search_criteria_dto_document_number = "search_criteria_dto_document_number_example"; // string | 
-$search_criteria_dto_currency = "search_criteria_dto_currency_example"; // string | 
+$search_criteria_dto_document_number = "search_criteria_dto_document_number_example"; // string | MaxLength: 20
+$search_criteria_dto_currency = "search_criteria_dto_currency_example"; // string | MaxLength: 50
 $search_criteria_dto_company_ids = array("search_criteria_dto_company_ids_example"); // string[] | 
 $search_criteria_dto_issuers = array("search_criteria_dto_issuers_example"); // string[] | 
 $search_criteria_dto_customers = array("search_criteria_dto_customers_example"); // string[] | 
@@ -191,7 +209,7 @@ $search_criteria_dto_number_of_records = 56; // int |
 $search_criteria_dto_sort_field = "search_criteria_dto_sort_field_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserCountDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field);
+    $result = $apiInstance->emailUserCountDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserCountDocuments: ', $e->getMessage(), PHP_EOL;
@@ -203,10 +221,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **search_criteria_dto_id** | **string**|  | [optional]
- **search_criteria_dto_document_number** | **string**|  | [optional]
- **search_criteria_dto_currency** | **string**|  | [optional]
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **search_criteria_dto_id** | [**string**](../Model/.md)|  | [optional]
+ **search_criteria_dto_document_number** | **string**| MaxLength: 20 | [optional]
+ **search_criteria_dto_currency** | **string**| MaxLength: 50 | [optional]
  **search_criteria_dto_company_ids** | [**string[]**](../Model/string.md)|  | [optional]
  **search_criteria_dto_issuers** | [**string[]**](../Model/string.md)|  | [optional]
  **search_criteria_dto_customers** | [**string[]**](../Model/string.md)|  | [optional]
@@ -226,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**int**
 
 ### Authorization
 
@@ -235,12 +253,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserGet**
-> object emailUserGet($virtual_operator)
+> \Swagger\Client\Model\EmailUserSummary emailUserGet($virtual_operator)
 
 Gets an email user by email
 
@@ -249,11 +267,15 @@ Gets an email user by email
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->emailUserGet($virtual_operator);
+    $result = $apiInstance->emailUserGet($virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserGet: ', $e->getMessage(), PHP_EOL;
@@ -265,11 +287,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\EmailUserSummary**](../Model/EmailUserSummary.md)
 
 ### Authorization
 
@@ -278,12 +300,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserGetDocumentWithAllDetails**
-> object emailUserGetDocumentWithAllDetails($virtual_operator, $id, $data_get_pdf, $data_get_ubl)
+> \Swagger\Client\Model\DocumentDTO emailUserGetDocumentWithAllDetails($virtual_operator, $id, $data_get_pdf, $data_get_ubl)
 
 Gets a outboundDocument with all associated details
 
@@ -292,14 +314,18 @@ Gets a outboundDocument with all associated details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
-$data_get_pdf = true; // bool | 
-$data_get_ubl = true; // bool | 
+$data_get_pdf = true; // bool | Get Pdf?
+$data_get_ubl = true; // bool | Get UBL?
 
 try {
-    $result = $api_instance->emailUserGetDocumentWithAllDetails($virtual_operator, $id, $data_get_pdf, $data_get_ubl);
+    $result = $apiInstance->emailUserGetDocumentWithAllDetails($virtual_operator, $id, $data_get_pdf, $data_get_ubl);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserGetDocumentWithAllDetails: ', $e->getMessage(), PHP_EOL;
@@ -311,14 +337,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **id** | **string**|  |
- **data_get_pdf** | **bool**|  | [optional]
- **data_get_ubl** | **bool**|  | [optional]
+ **data_get_pdf** | **bool**| Get Pdf? |
+ **data_get_ubl** | **bool**| Get UBL? |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\DocumentDTO**](../Model/DocumentDTO.md)
 
 ### Authorization
 
@@ -341,13 +367,17 @@ Gets an email user outboundDocument attachment content
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $attachment_id = "attachment_id_example"; // string | 
 $virtual_operator = "virtual_operator_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserGetEmailUserDocumentAttachmentContent($id, $attachment_id, $virtual_operator);
+    $result = $apiInstance->emailUserGetEmailUserDocumentAttachmentContent($id, $attachment_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserGetEmailUserDocumentAttachmentContent: ', $e->getMessage(), PHP_EOL;
@@ -379,7 +409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserGetEmailUserDocumentAttachments**
-> object emailUserGetEmailUserDocumentAttachments($virtual_operator, $id)
+> \Swagger\Client\Model\DocumentAttachmentDto emailUserGetEmailUserDocumentAttachments($virtual_operator, $id)
 
 Gets a outboundDocument attachment for an email user
 
@@ -388,12 +418,16 @@ Gets a outboundDocument attachment for an email user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserGetEmailUserDocumentAttachments($virtual_operator, $id);
+    $result = $apiInstance->emailUserGetEmailUserDocumentAttachments($virtual_operator, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserGetEmailUserDocumentAttachments: ', $e->getMessage(), PHP_EOL;
@@ -405,12 +439,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **id** | **string**|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\DocumentAttachmentDto**](../Model/DocumentAttachmentDto.md)
 
 ### Authorization
 
@@ -419,7 +453,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -433,13 +467,17 @@ Gets a file content for an email user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | 
 $file_id = "file_id_example"; // string | 
-$virtual_operator = "virtual_operator_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->emailUserGetEmailUserFileContent($id, $file_id, $virtual_operator);
+    $result = $apiInstance->emailUserGetEmailUserFileContent($id, $file_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserGetEmailUserFileContent: ', $e->getMessage(), PHP_EOL;
@@ -451,9 +489,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
- **file_id** | **string**|  |
- **virtual_operator** | **string**|  |
+ **id** | [**string**](../Model/.md)|  |
+ **file_id** | [**string**](../Model/.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
@@ -480,13 +518,17 @@ Rejects a outboundDocument
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 $data = new \Swagger\Client\Model\BusinessStatusDTO(); // \Swagger\Client\Model\BusinessStatusDTO | 
 
 try {
-    $result = $api_instance->emailUserReject($virtual_operator, $id, $data);
+    $result = $apiInstance->emailUserReject($virtual_operator, $id, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserReject: ', $e->getMessage(), PHP_EOL;
@@ -498,8 +540,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
  **data** | [**\Swagger\Client\Model\BusinessStatusDTO**](../Model/BusinessStatusDTO.md)|  |
 
 ### Return type
@@ -518,7 +560,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserRequestEmailUser**
-> object emailUserRequestEmailUser($virtual_operator, $email_user)
+> \Swagger\Client\Model\ResultMessageBoolean emailUserRequestEmailUser($virtual_operator, $email_user)
 
 Gets an email user
 
@@ -527,12 +569,16 @@ Gets an email user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
-$email_user = new \Swagger\Client\Model\EmailUserDTO(); // \Swagger\Client\Model\EmailUserDTO | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$email_user = new \Swagger\Client\Model\EmailUserInputDto(); // \Swagger\Client\Model\EmailUserInputDto | 
 
 try {
-    $result = $api_instance->emailUserRequestEmailUser($virtual_operator, $email_user);
+    $result = $apiInstance->emailUserRequestEmailUser($virtual_operator, $email_user);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserRequestEmailUser: ', $e->getMessage(), PHP_EOL;
@@ -544,12 +590,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **email_user** | [**\Swagger\Client\Model\EmailUserDTO**](../Model/EmailUserDTO.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **email_user** | [**\Swagger\Client\Model\EmailUserInputDto**](../Model/EmailUserInputDto.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageBoolean**](../Model/ResultMessageBoolean.md)
 
 ### Authorization
 
@@ -558,29 +604,33 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **emailUserResetEmailUserPassword**
-> object emailUserResetEmailUserPassword($virtual_operator, $email_user)
+# **emailUserRequestRecoveryPassword**
+> bool emailUserRequestRecoveryPassword($virtual_operator, $user)
 
-resets an email user password
+Resets an email user password
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
-$email_user = new \Swagger\Client\Model\EmailUserDTO(); // \Swagger\Client\Model\EmailUserDTO | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$user = new \Swagger\Client\Model\EmailUserDTO(); // \Swagger\Client\Model\EmailUserDTO | 
 
 try {
-    $result = $api_instance->emailUserResetEmailUserPassword($virtual_operator, $email_user);
+    $result = $apiInstance->emailUserRequestRecoveryPassword($virtual_operator, $user);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailUserApi->emailUserResetEmailUserPassword: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailUserApi->emailUserRequestRecoveryPassword: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -589,12 +639,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **email_user** | [**\Swagger\Client\Model\EmailUserDTO**](../Model/EmailUserDTO.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **user** | [**\Swagger\Client\Model\EmailUserDTO**](../Model/EmailUserDTO.md)|  |
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
@@ -603,12 +653,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserSearchCompanies**
-> object emailUserSearchCompanies($virtual_operator)
+> \Swagger\Client\Model\CompanyDTO[] emailUserSearchCompanies($virtual_operator)
 
 Search companies using search criterias  Default NumberOfRecords=25
 
@@ -617,11 +667,15 @@ Search companies using search criterias  Default NumberOfRecords=25
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->emailUserSearchCompanies($virtual_operator);
+    $result = $apiInstance->emailUserSearchCompanies($virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserSearchCompanies: ', $e->getMessage(), PHP_EOL;
@@ -633,11 +687,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\CompanyDTO[]**](../Model/CompanyDTO.md)
 
 ### Authorization
 
@@ -646,26 +700,30 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserSearchCustomers**
-> object emailUserSearchCustomers($virtual_operator, $company_id)
+> \Swagger\Client\Model\CustomerSummaryDTO[] emailUserSearchCustomers($virtual_operator, $company_id)
 
-Gets selected company's Customer.  Default NumberOfRecords=25
+Gets selected company's Customers.  Default NumberOfRecords=25
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserSearchCustomers($virtual_operator, $company_id);
+    $result = $apiInstance->emailUserSearchCustomers($virtual_operator, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserSearchCustomers: ', $e->getMessage(), PHP_EOL;
@@ -677,12 +735,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\CustomerSummaryDTO[]**](../Model/CustomerSummaryDTO.md)
 
 ### Authorization
 
@@ -691,25 +749,29 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **emailUserSearchDocuments**
-> object emailUserSearchDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field)
+> \Swagger\Client\Model\OutboundDocument[] emailUserSearchDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field)
 
-Search documents as an email user
+Search documents
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\EmailUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $search_criteria_dto_id = "search_criteria_dto_id_example"; // string | 
-$search_criteria_dto_document_number = "search_criteria_dto_document_number_example"; // string | 
-$search_criteria_dto_currency = "search_criteria_dto_currency_example"; // string | 
+$search_criteria_dto_document_number = "search_criteria_dto_document_number_example"; // string | MaxLength: 20
+$search_criteria_dto_currency = "search_criteria_dto_currency_example"; // string | MaxLength: 50
 $search_criteria_dto_company_ids = array("search_criteria_dto_company_ids_example"); // string[] | 
 $search_criteria_dto_issuers = array("search_criteria_dto_issuers_example"); // string[] | 
 $search_criteria_dto_customers = array("search_criteria_dto_customers_example"); // string[] | 
@@ -728,7 +790,7 @@ $search_criteria_dto_number_of_records = 56; // int |
 $search_criteria_dto_sort_field = "search_criteria_dto_sort_field_example"; // string | 
 
 try {
-    $result = $api_instance->emailUserSearchDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field);
+    $result = $apiInstance->emailUserSearchDocuments($virtual_operator, $search_criteria_dto_id, $search_criteria_dto_document_number, $search_criteria_dto_currency, $search_criteria_dto_company_ids, $search_criteria_dto_issuers, $search_criteria_dto_customers, $search_criteria_dto_include_files, $search_criteria_dto_include_attachments, $search_criteria_dto_document_types, $search_criteria_dto_document_sub_types, $search_criteria_dto_business_status, $search_criteria_dto_communication_status, $search_criteria_dto_creation_date_start, $search_criteria_dto_creation_date_end, $search_criteria_dto_document_date_start, $search_criteria_dto_document_date_end, $search_criteria_dto_offset, $search_criteria_dto_number_of_records, $search_criteria_dto_sort_field);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailUserApi->emailUserSearchDocuments: ', $e->getMessage(), PHP_EOL;
@@ -740,10 +802,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **search_criteria_dto_id** | **string**|  | [optional]
- **search_criteria_dto_document_number** | **string**|  | [optional]
- **search_criteria_dto_currency** | **string**|  | [optional]
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **search_criteria_dto_id** | [**string**](../Model/.md)|  | [optional]
+ **search_criteria_dto_document_number** | **string**| MaxLength: 20 | [optional]
+ **search_criteria_dto_currency** | **string**| MaxLength: 50 | [optional]
  **search_criteria_dto_company_ids** | [**string[]**](../Model/string.md)|  | [optional]
  **search_criteria_dto_issuers** | [**string[]**](../Model/string.md)|  | [optional]
  **search_criteria_dto_customers** | [**string[]**](../Model/string.md)|  | [optional]
@@ -763,7 +825,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\OutboundDocument[]**](../Model/OutboundDocument.md)
 
 ### Authorization
 
@@ -773,6 +835,108 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **emailUserUpdate**
+> string emailUserUpdate($user_id, $virtual_operator, $user)
+
+Updates the email user info
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = "user_id_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$user = new \Swagger\Client\Model\EmailUserUpdateInputDto(); // \Swagger\Client\Model\EmailUserUpdateInputDto | 
+
+try {
+    $result = $apiInstance->emailUserUpdate($user_id, $virtual_operator, $user);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailUserApi->emailUserUpdate: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | [**string**](../Model/.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **user** | [**\Swagger\Client\Model\EmailUserUpdateInputDto**](../Model/EmailUserUpdateInputDto.md)|  |
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **emailUserUpdatePassword**
+> string emailUserUpdatePassword($user_id, $virtual_operator, $account_update_password)
+
+Updates the email user info
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\EmailUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = "user_id_example"; // string | 
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$account_update_password = new \Swagger\Client\Model\EmailUserAccountUpdatePasswordInputDto(); // \Swagger\Client\Model\EmailUserAccountUpdatePasswordInputDto | 
+
+try {
+    $result = $apiInstance->emailUserUpdatePassword($user_id, $virtual_operator, $account_update_password);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailUserApi->emailUserUpdatePassword: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | [**string**](../Model/.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **account_update_password** | [**\Swagger\Client\Model\EmailUserAccountUpdatePasswordInputDto**](../Model/EmailUserAccountUpdatePasswordInputDto.md)|  |
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

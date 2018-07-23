@@ -8,9 +8,13 @@ Method | HTTP request | Description
 [**serieCreate**](SerieApi.md#serieCreate) | **POST** /api/{virtualOperator}/companies/{companyId}/series | Create a new serie
 [**serieDetails**](SerieApi.md#serieDetails) | **GET** /api/{virtualOperator}/companies/{companyId}/series/{id} | Get specific serie by companyId and serieId
 [**serieGetAll**](SerieApi.md#serieGetAll) | **GET** /api/{virtualOperator}/companies/{companyId}/series | Get a list of all series for the especified companyId
+[**serieGetAllForContingencyInvoice**](SerieApi.md#serieGetAllForContingencyInvoice) | **GET** /api/{virtualOperator}/companies/{companyId}/series/contingency | Get a list of all contingency series for the especified companyId
 [**serieGetAllForCreditNote**](SerieApi.md#serieGetAllForCreditNote) | **GET** /api/{virtualOperator}/companies/{companyId}/series/creditnote | Get a list of all credit note series for the especified companyId
 [**serieGetAllForDebitNote**](SerieApi.md#serieGetAllForDebitNote) | **GET** /api/{virtualOperator}/companies/{companyId}/series/debitnote | Get a list of all debit note series for the especified companyId
 [**serieGetAllForSalesInvoice**](SerieApi.md#serieGetAllForSalesInvoice) | **GET** /api/{virtualOperator}/companies/{companyId}/series/salesinvoice | Get a list of all sales invoice series for the especified companyId
+[**serieGetCount**](SerieApi.md#serieGetCount) | **GET** /api/{virtualOperator}/companies/{companyId}/series/count | Get a list of all series for the especified companyId
+[**serieGetCountWithoutVirtualOperator**](SerieApi.md#serieGetCountWithoutVirtualOperator) | **GET** /api/companies/{companyId}/series/count | Get a list of all series for the especified companyId
+[**serieGetDianRegisteredSeries**](SerieApi.md#serieGetDianRegisteredSeries) | **GET** /api/{virtualOperator}/companies/{companyId}/series/dian | Gets the Dian registered series for the selected company.
 [**serieInactivate**](SerieApi.md#serieInactivate) | **PUT** /api/{virtualOperator}/companies/{companyId}/series/{id}/inactivate | Disable serie
 [**serieUpdate**](SerieApi.md#serieUpdate) | **PUT** /api/{virtualOperator}/companies/{companyId}/series/{id} | Update serie
 
@@ -25,13 +29,17 @@ Activate serie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->serieActivate($virtual_operator, $company_id, $id);
+    $result = $apiInstance->serieActivate($virtual_operator, $company_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieActivate: ', $e->getMessage(), PHP_EOL;
@@ -43,9 +51,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
@@ -63,7 +71,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieCreate**
-> object serieCreate($virtual_operator, $company_id, $serie_dto)
+> string serieCreate($virtual_operator, $company_id, $serie_dto)
 
 Create a new serie
 
@@ -72,13 +80,17 @@ Create a new serie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
-$serie_dto = new \Swagger\Client\Model\SerieDTO(); // \Swagger\Client\Model\SerieDTO | 
+$serie_dto = new \Swagger\Client\Model\SerieInputDto(); // \Swagger\Client\Model\SerieInputDto | 
 
 try {
-    $result = $api_instance->serieCreate($virtual_operator, $company_id, $serie_dto);
+    $result = $apiInstance->serieCreate($virtual_operator, $company_id, $serie_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieCreate: ', $e->getMessage(), PHP_EOL;
@@ -90,13 +102,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
- **serie_dto** | [**\Swagger\Client\Model\SerieDTO**](../Model/SerieDTO.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+ **serie_dto** | [**\Swagger\Client\Model\SerieInputDto**](../Model/SerieInputDto.md)|  |
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -105,12 +117,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieDetails**
-> object serieDetails($virtual_operator, $company_id, $id)
+> \Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto serieDetails($virtual_operator, $company_id, $id)
 
 Get specific serie by companyId and serieId
 
@@ -119,13 +131,17 @@ Get specific serie by companyId and serieId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->serieDetails($virtual_operator, $company_id, $id);
+    $result = $apiInstance->serieDetails($virtual_operator, $company_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieDetails: ', $e->getMessage(), PHP_EOL;
@@ -137,13 +153,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto**](../Model/ResultMessageIEnumerableSerieOutputDto.md)
 
 ### Authorization
 
@@ -157,7 +173,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieGetAll**
-> object serieGetAll($virtual_operator, $company_id)
+> \Swagger\Client\Model\ResultMessageListSerieOutputDto serieGetAll($virtual_operator, $company_id)
 
 Get a list of all series for the especified companyId
 
@@ -166,12 +182,16 @@ Get a list of all series for the especified companyId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->serieGetAll($virtual_operator, $company_id);
+    $result = $apiInstance->serieGetAll($virtual_operator, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieGetAll: ', $e->getMessage(), PHP_EOL;
@@ -183,12 +203,61 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageListSerieOutputDto**](../Model/ResultMessageListSerieOutputDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **serieGetAllForContingencyInvoice**
+> \Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto serieGetAllForContingencyInvoice($virtual_operator, $company_id)
+
+Get a list of all contingency series for the especified companyId
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$company_id = "company_id_example"; // string | 
+
+try {
+    $result = $apiInstance->serieGetAllForContingencyInvoice($virtual_operator, $company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SerieApi->serieGetAllForContingencyInvoice: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto**](../Model/ResultMessageIEnumerableSerieOutputDto.md)
 
 ### Authorization
 
@@ -202,7 +271,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieGetAllForCreditNote**
-> object serieGetAllForCreditNote($virtual_operator, $company_id)
+> \Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto serieGetAllForCreditNote($virtual_operator, $company_id)
 
 Get a list of all credit note series for the especified companyId
 
@@ -211,12 +280,16 @@ Get a list of all credit note series for the especified companyId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->serieGetAllForCreditNote($virtual_operator, $company_id);
+    $result = $apiInstance->serieGetAllForCreditNote($virtual_operator, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieGetAllForCreditNote: ', $e->getMessage(), PHP_EOL;
@@ -228,12 +301,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto**](../Model/ResultMessageIEnumerableSerieOutputDto.md)
 
 ### Authorization
 
@@ -247,7 +320,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieGetAllForDebitNote**
-> object serieGetAllForDebitNote($virtual_operator, $company_id)
+> \Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto serieGetAllForDebitNote($virtual_operator, $company_id)
 
 Get a list of all debit note series for the especified companyId
 
@@ -256,12 +329,16 @@ Get a list of all debit note series for the especified companyId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->serieGetAllForDebitNote($virtual_operator, $company_id);
+    $result = $apiInstance->serieGetAllForDebitNote($virtual_operator, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieGetAllForDebitNote: ', $e->getMessage(), PHP_EOL;
@@ -273,12 +350,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto**](../Model/ResultMessageIEnumerableSerieOutputDto.md)
 
 ### Authorization
 
@@ -292,7 +369,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serieGetAllForSalesInvoice**
-> object serieGetAllForSalesInvoice($virtual_operator, $company_id)
+> \Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto serieGetAllForSalesInvoice($virtual_operator, $company_id)
 
 Get a list of all sales invoice series for the especified companyId
 
@@ -301,12 +378,16 @@ Get a list of all sales invoice series for the especified companyId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->serieGetAllForSalesInvoice($virtual_operator, $company_id);
+    $result = $apiInstance->serieGetAllForSalesInvoice($virtual_operator, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieGetAllForSalesInvoice: ', $e->getMessage(), PHP_EOL;
@@ -318,8 +399,153 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Swagger\Client\Model\ResultMessageIEnumerableSerieOutputDto**](../Model/ResultMessageIEnumerableSerieOutputDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **serieGetCount**
+> \Swagger\Client\Model\ResultMessageIEnumerableInt32 serieGetCount($virtual_operator, $company_id)
+
+Get a list of all series for the especified companyId
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$company_id = "company_id_example"; // string | 
+
+try {
+    $result = $apiInstance->serieGetCount($virtual_operator, $company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SerieApi->serieGetCount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Swagger\Client\Model\ResultMessageIEnumerableInt32**](../Model/ResultMessageIEnumerableInt32.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **serieGetCountWithoutVirtualOperator**
+> \Swagger\Client\Model\ResultMessageIEnumerableInt32 serieGetCountWithoutVirtualOperator($company_id)
+
+Get a list of all series for the especified companyId
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$company_id = "company_id_example"; // string | 
+
+try {
+    $result = $apiInstance->serieGetCountWithoutVirtualOperator($company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SerieApi->serieGetCountWithoutVirtualOperator: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **company_id** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Swagger\Client\Model\ResultMessageIEnumerableInt32**](../Model/ResultMessageIEnumerableInt32.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **serieGetDianRegisteredSeries**
+> object serieGetDianRegisteredSeries($virtual_operator, $company_id)
+
+Gets the Dian registered series for the selected company.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$company_id = "company_id_example"; // string | 
+
+try {
+    $result = $apiInstance->serieGetDianRegisteredSeries($virtual_operator, $company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SerieApi->serieGetDianRegisteredSeries: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
@@ -346,13 +572,17 @@ Disable serie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->serieInactivate($virtual_operator, $company_id, $id);
+    $result = $apiInstance->serieInactivate($virtual_operator, $company_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieInactivate: ', $e->getMessage(), PHP_EOL;
@@ -364,9 +594,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
@@ -393,14 +623,18 @@ Update serie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SerieApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\SerieApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
-$serie_dto = new \Swagger\Client\Model\SerieDTO(); // \Swagger\Client\Model\SerieDTO | 
+$serie_dto = new \Swagger\Client\Model\SerieUpdateInputDto(); // \Swagger\Client\Model\SerieUpdateInputDto | 
 $company_id = "company_id_example"; // string | 
 
 try {
-    $result = $api_instance->serieUpdate($virtual_operator, $id, $serie_dto, $company_id);
+    $result = $apiInstance->serieUpdate($virtual_operator, $id, $serie_dto, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SerieApi->serieUpdate: ', $e->getMessage(), PHP_EOL;
@@ -412,9 +646,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
- **serie_dto** | [**\Swagger\Client\Model\SerieDTO**](../Model/SerieDTO.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
+ **serie_dto** | [**\Swagger\Client\Model\SerieUpdateInputDto**](../Model/SerieUpdateInputDto.md)|  |
  **company_id** | **string**|  |
 
 ### Return type

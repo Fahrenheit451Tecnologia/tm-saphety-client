@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **outboundDocumentStatisticsGet**
-> \Swagger\Client\Model\DocumentStatisticsDTO outboundDocumentStatisticsGet($doc_statistics_criteria_search_interval)
+> \Swagger\Client\Model\DocumentStatisticsOutputDto outboundDocumentStatisticsGet($doc_statistics_criteria_search_interval)
 
 Get the documents statistics for a given date
 
@@ -18,11 +18,15 @@ Get the documents statistics for a given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentStatisticsApi(new \Http\Adapter\Guzzle6\Client());
-$doc_statistics_criteria_search_interval = "doc_statistics_criteria_search_interval_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentStatisticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$doc_statistics_criteria_search_interval = "doc_statistics_criteria_search_interval_example"; // string | \"24HOURS,5DAYS,30DAYS
 
 try {
-    $result = $api_instance->outboundDocumentStatisticsGet($doc_statistics_criteria_search_interval);
+    $result = $apiInstance->outboundDocumentStatisticsGet($doc_statistics_criteria_search_interval);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentStatisticsApi->outboundDocumentStatisticsGet: ', $e->getMessage(), PHP_EOL;
@@ -34,11 +38,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **doc_statistics_criteria_search_interval** | **string**|  | [optional]
+ **doc_statistics_criteria_search_interval** | **string**| \&quot;24HOURS,5DAYS,30DAYS |
 
 ### Return type
 
-[**\Swagger\Client\Model\DocumentStatisticsDTO**](../Model/DocumentStatisticsDTO.md)
+[**\Swagger\Client\Model\DocumentStatisticsOutputDto**](../Model/DocumentStatisticsOutputDto.md)
 
 ### Authorization
 
@@ -52,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundDocumentStatisticsGet_0**
-> \Swagger\Client\Model\DocumentStatisticsDTO outboundDocumentStatisticsGet_0($virtual_operator, $doc_statistics_criteria_search_interval)
+> \Swagger\Client\Model\DocumentStatisticsOutputDto outboundDocumentStatisticsGet_0($virtual_operator, $doc_statistics_criteria_search_interval)
 
 Get the documents statistics for a given date
 
@@ -61,12 +65,16 @@ Get the documents statistics for a given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentStatisticsApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
-$doc_statistics_criteria_search_interval = "doc_statistics_criteria_search_interval_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentStatisticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
+$doc_statistics_criteria_search_interval = "doc_statistics_criteria_search_interval_example"; // string | \"24HOURS,5DAYS,30DAYS
 
 try {
-    $result = $api_instance->outboundDocumentStatisticsGet_0($virtual_operator, $doc_statistics_criteria_search_interval);
+    $result = $apiInstance->outboundDocumentStatisticsGet_0($virtual_operator, $doc_statistics_criteria_search_interval);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentStatisticsApi->outboundDocumentStatisticsGet_0: ', $e->getMessage(), PHP_EOL;
@@ -78,12 +86,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **doc_statistics_criteria_search_interval** | **string**|  | [optional]
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **doc_statistics_criteria_search_interval** | **string**| \&quot;24HOURS,5DAYS,30DAYS |
 
 ### Return type
 
-[**\Swagger\Client\Model\DocumentStatisticsDTO**](../Model/DocumentStatisticsDTO.md)
+[**\Swagger\Client\Model\DocumentStatisticsOutputDto**](../Model/DocumentStatisticsOutputDto.md)
 
 ### Authorization
 

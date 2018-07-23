@@ -18,13 +18,17 @@ Invite a new user and associates it with the specified company
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CompanyUserApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\CompanyUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $company_id = "company_id_example"; // string | 
-$user_invitation_dto = new \Swagger\Client\Model\UserInvitationRequestDTO(); // \Swagger\Client\Model\UserInvitationRequestDTO | 
+$user_invitation_dto = new \Swagger\Client\Model\UserInvitationRequestDto(); // \Swagger\Client\Model\UserInvitationRequestDto | 
 
 try {
-    $result = $api_instance->companyUserInvite($virtual_operator, $company_id, $user_invitation_dto);
+    $result = $apiInstance->companyUserInvite($virtual_operator, $company_id, $user_invitation_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompanyUserApi->companyUserInvite: ', $e->getMessage(), PHP_EOL;
@@ -36,9 +40,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **company_id** | **string**|  |
- **user_invitation_dto** | [**\Swagger\Client\Model\UserInvitationRequestDTO**](../Model/UserInvitationRequestDTO.md)|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **company_id** | [**string**](../Model/.md)|  |
+ **user_invitation_dto** | [**\Swagger\Client\Model\UserInvitationRequestDto**](../Model/UserInvitationRequestDto.md)|  |
 
 ### Return type
 
@@ -65,13 +69,17 @@ Removes a user from a company.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CompanyUserApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\CompanyUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $user_id = "user_id_example"; // string | 
 $company_id = "company_id_example"; // string | 
 $virtual_operator = "virtual_operator_example"; // string | 
 
 try {
-    $result = $api_instance->companyUserRemoveMembership($user_id, $company_id, $virtual_operator);
+    $result = $apiInstance->companyUserRemoveMembership($user_id, $company_id, $virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompanyUserApi->companyUserRemoveMembership: ', $e->getMessage(), PHP_EOL;
@@ -83,8 +91,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **string**|  |
- **company_id** | **string**|  |
+ **user_id** | [**string**](../Model/.md)|  |
+ **company_id** | [**string**](../Model/.md)|  |
  **virtual_operator** | **string**|  |
 
 ### Return type

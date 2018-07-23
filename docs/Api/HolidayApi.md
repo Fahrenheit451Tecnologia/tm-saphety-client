@@ -5,7 +5,7 @@ All URIs are relative to *https://api-einvoicing-co-qa.saphety.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**holidayCount**](HolidayApi.md#holidayCount) | **POST** /api/holiday/count | Gets the number of records that match the search criteria
-[**holidayCreate**](HolidayApi.md#holidayCreate) | **POST** /api/holiday | Create new holiday.  The time from datetime value will be discarded
+[**holidayCreate**](HolidayApi.md#holidayCreate) | **POST** /api/holiday | Create new holiday. The time from datetime value will be discarded
 [**holidayDelete**](HolidayApi.md#holidayDelete) | **DELETE** /api/holiday/{date} | Delete holiday. The time from datetime value will be discarded
 [**holidayGetAll**](HolidayApi.md#holidayGetAll) | **GET** /api/holiday/getAll | Get all holidays
 [**holidayGetAll_0**](HolidayApi.md#holidayGetAll_0) | **GET** /api/holiday | Get all holidays
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **holidayCount**
-> object holidayCount($search_criteria)
+> int holidayCount($search_criteria)
 
 Gets the number of records that match the search criteria
 
@@ -22,11 +22,15 @@ Gets the number of records that match the search criteria
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
-$search_criteria = new \Swagger\Client\Model\SearchHolidayCriteriaDTO(); // \Swagger\Client\Model\SearchHolidayCriteriaDTO | 
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$search_criteria = new \Swagger\Client\Model\SearchHolidayCriteriaDto(); // \Swagger\Client\Model\SearchHolidayCriteriaDto | 
 
 try {
-    $result = $api_instance->holidayCount($search_criteria);
+    $result = $apiInstance->holidayCount($search_criteria);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidayCount: ', $e->getMessage(), PHP_EOL;
@@ -38,11 +42,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search_criteria** | [**\Swagger\Client\Model\SearchHolidayCriteriaDTO**](../Model/SearchHolidayCriteriaDTO.md)|  |
+ **search_criteria** | [**\Swagger\Client\Model\SearchHolidayCriteriaDto**](../Model/SearchHolidayCriteriaDto.md)|  |
 
 ### Return type
 
-**object**
+**int**
 
 ### Authorization
 
@@ -51,25 +55,29 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **holidayCreate**
-> \Swagger\Client\Model\ResultMessageGuid holidayCreate($holiday_dto)
+> string holidayCreate($holiday_dto)
 
-Create new holiday.  The time from datetime value will be discarded
+Create new holiday. The time from datetime value will be discarded
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
-$holiday_dto = new \Swagger\Client\Model\HolidayDTO(); // \Swagger\Client\Model\HolidayDTO | 
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$holiday_dto = new \Swagger\Client\Model\HolidayDto(); // \Swagger\Client\Model\HolidayDto | 
 
 try {
-    $result = $api_instance->holidayCreate($holiday_dto);
+    $result = $apiInstance->holidayCreate($holiday_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidayCreate: ', $e->getMessage(), PHP_EOL;
@@ -81,11 +89,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **holiday_dto** | [**\Swagger\Client\Model\HolidayDTO**](../Model/HolidayDTO.md)|  |
+ **holiday_dto** | [**\Swagger\Client\Model\HolidayDto**](../Model/HolidayDto.md)|  |
 
 ### Return type
 
-[**\Swagger\Client\Model\ResultMessageGuid**](../Model/ResultMessageGuid.md)
+**string**
 
 ### Authorization
 
@@ -94,12 +102,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **holidayDelete**
-> object holidayDelete($date)
+> bool holidayDelete($date)
 
 Delete holiday. The time from datetime value will be discarded
 
@@ -108,11 +116,15 @@ Delete holiday. The time from datetime value will be discarded
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $result = $api_instance->holidayDelete($date);
+    $result = $apiInstance->holidayDelete($date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidayDelete: ', $e->getMessage(), PHP_EOL;
@@ -128,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
@@ -137,26 +149,29 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **holidayGetAll**
-> holidayGetAll()
+> \Swagger\Client\Model\Holiday[] holidayGetAll()
 
 Get all holidays
-
-Get a list of all templates for the company
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $api_instance->holidayGetAll();
+    $result = $apiInstance->holidayGetAll();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidayGetAll: ', $e->getMessage(), PHP_EOL;
 }
@@ -168,7 +183,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Holiday[]**](../Model/Holiday.md)
 
 ### Authorization
 
@@ -177,26 +192,29 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **holidayGetAll_0**
-> holidayGetAll_0()
+> \Swagger\Client\Model\Holiday[] holidayGetAll_0()
 
 Get all holidays
-
-Get a list of all templates for the company
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $api_instance->holidayGetAll_0();
+    $result = $apiInstance->holidayGetAll_0();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidayGetAll_0: ', $e->getMessage(), PHP_EOL;
 }
@@ -208,7 +226,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Holiday[]**](../Model/Holiday.md)
 
 ### Authorization
 
@@ -217,12 +235,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **holidaySearch**
-> object holidaySearch($search_criteria)
+> \Swagger\Client\Model\Holiday[] holidaySearch($search_criteria)
 
 Search holidays using search criterias
 
@@ -231,11 +249,15 @@ Search holidays using search criterias
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\HolidayApi(new \Http\Adapter\Guzzle6\Client());
-$search_criteria = new \Swagger\Client\Model\SearchHolidayCriteriaDTO(); // \Swagger\Client\Model\SearchHolidayCriteriaDTO | 
+$apiInstance = new Swagger\Client\Api\HolidayApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$search_criteria = new \Swagger\Client\Model\SearchHolidayCriteriaDto(); // \Swagger\Client\Model\SearchHolidayCriteriaDto | 
 
 try {
-    $result = $api_instance->holidaySearch($search_criteria);
+    $result = $apiInstance->holidaySearch($search_criteria);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HolidayApi->holidaySearch: ', $e->getMessage(), PHP_EOL;
@@ -247,11 +269,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search_criteria** | [**\Swagger\Client\Model\SearchHolidayCriteriaDTO**](../Model/SearchHolidayCriteriaDTO.md)|  |
+ **search_criteria** | [**\Swagger\Client\Model\SearchHolidayCriteriaDto**](../Model/SearchHolidayCriteriaDto.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\Holiday[]**](../Model/Holiday.md)
 
 ### Authorization
 
@@ -260,7 +282,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

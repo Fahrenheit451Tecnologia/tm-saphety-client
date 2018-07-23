@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **outboundDocumentDraftDelete**
-> object outboundDocumentDraftDelete($virtual_operator, $id)
+> bool outboundDocumentDraftDelete($virtual_operator, $id)
 
 Get a specific outboundDocument draft
 
@@ -21,12 +21,16 @@ Get a specific outboundDocument draft
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentDraftApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentDraftApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->outboundDocumentDraftDelete($virtual_operator, $id);
+    $result = $apiInstance->outboundDocumentDraftDelete($virtual_operator, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentDraftApi->outboundDocumentDraftDelete: ', $e->getMessage(), PHP_EOL;
@@ -38,12 +42,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
@@ -52,12 +56,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundDocumentDraftGetAll**
-> object outboundDocumentDraftGetAll($virtual_operator)
+> \Swagger\Client\Model\DocumentDraftDTO[] outboundDocumentDraftGetAll($virtual_operator)
 
 Get the outboundDocument drafts for a given company
 
@@ -66,11 +70,15 @@ Get the outboundDocument drafts for a given company
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentDraftApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentDraftApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 
 try {
-    $result = $api_instance->outboundDocumentDraftGetAll($virtual_operator);
+    $result = $apiInstance->outboundDocumentDraftGetAll($virtual_operator);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentDraftApi->outboundDocumentDraftGetAll: ', $e->getMessage(), PHP_EOL;
@@ -82,11 +90,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\DocumentDraftDTO[]**](../Model/DocumentDraftDTO.md)
 
 ### Authorization
 
@@ -95,12 +103,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundDocumentDraftLoad**
-> object outboundDocumentDraftLoad($virtual_operator, $id)
+> \Swagger\Client\Model\DocumentDraftDTO outboundDocumentDraftLoad($virtual_operator, $id)
 
 Get a specific outboundDocument draft
 
@@ -109,12 +117,16 @@ Get a specific outboundDocument draft
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentDraftApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentDraftApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 
 try {
-    $result = $api_instance->outboundDocumentDraftLoad($virtual_operator, $id);
+    $result = $apiInstance->outboundDocumentDraftLoad($virtual_operator, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentDraftApi->outboundDocumentDraftLoad: ', $e->getMessage(), PHP_EOL;
@@ -126,12 +138,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\DocumentDraftDTO**](../Model/DocumentDraftDTO.md)
 
 ### Authorization
 
@@ -140,12 +152,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundDocumentDraftSave**
-> object outboundDocumentDraftSave($virtual_operator, $draft)
+> string outboundDocumentDraftSave($virtual_operator, $draft)
 
 Get a specific outboundDocument draft
 
@@ -154,12 +166,16 @@ Get a specific outboundDocument draft
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentDraftApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentDraftApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $draft = new \Swagger\Client\Model\DocumentDraftCreateDTO(); // \Swagger\Client\Model\DocumentDraftCreateDTO | 
 
 try {
-    $result = $api_instance->outboundDocumentDraftSave($virtual_operator, $draft);
+    $result = $apiInstance->outboundDocumentDraftSave($virtual_operator, $draft);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentDraftApi->outboundDocumentDraftSave: ', $e->getMessage(), PHP_EOL;
@@ -171,12 +187,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
  **draft** | [**\Swagger\Client\Model\DocumentDraftCreateDTO**](../Model/DocumentDraftCreateDTO.md)|  |
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -185,12 +201,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundDocumentDraftUpdate**
-> object outboundDocumentDraftUpdate($virtual_operator, $id, $document_draft)
+> bool outboundDocumentDraftUpdate($virtual_operator, $id, $document_draft)
 
 Get a specific outboundDocument draft
 
@@ -199,13 +215,17 @@ Get a specific outboundDocument draft
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\OutboundDocumentDraftApi(new \Http\Adapter\Guzzle6\Client());
-$virtual_operator = "virtual_operator_example"; // string | 
+$apiInstance = new Swagger\Client\Api\OutboundDocumentDraftApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$virtual_operator = "virtual_operator_example"; // string | MaxLength: 60
 $id = "id_example"; // string | 
 $document_draft = new \Swagger\Client\Model\DocumentDraftUpdateDTO(); // \Swagger\Client\Model\DocumentDraftUpdateDTO | 
 
 try {
-    $result = $api_instance->outboundDocumentDraftUpdate($virtual_operator, $id, $document_draft);
+    $result = $apiInstance->outboundDocumentDraftUpdate($virtual_operator, $id, $document_draft);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OutboundDocumentDraftApi->outboundDocumentDraftUpdate: ', $e->getMessage(), PHP_EOL;
@@ -217,13 +237,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **virtual_operator** | **string**|  |
- **id** | **string**|  |
+ **virtual_operator** | **string**| MaxLength: 60 |
+ **id** | [**string**](../Model/.md)|  |
  **document_draft** | [**\Swagger\Client\Model\DocumentDraftUpdateDTO**](../Model/DocumentDraftUpdateDTO.md)|  |
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
@@ -232,7 +252,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

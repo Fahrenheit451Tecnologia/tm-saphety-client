@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **roleDetails**
-> object roleDetails($role_id)
+> \Swagger\Client\Model\RoleDto roleDetails($role_id)
 
 Gets a specific role
 
@@ -20,11 +20,15 @@ Gets a specific role
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RoleApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $role_id = "role_id_example"; // string | 
 
 try {
-    $result = $api_instance->roleDetails($role_id);
+    $result = $apiInstance->roleDetails($role_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoleApi->roleDetails: ', $e->getMessage(), PHP_EOL;
@@ -36,11 +40,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **string**|  |
+ **role_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\RoleDto**](../Model/RoleDto.md)
 
 ### Authorization
 
@@ -54,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **roleGetCompanyMembershipRoles**
-> object roleGetCompanyMembershipRoles()
+> \Swagger\Client\Model\RoleDto[] roleGetCompanyMembershipRoles()
 
 Gets the membership level roles
 
@@ -63,10 +67,14 @@ Gets the membership level roles
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RoleApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->roleGetCompanyMembershipRoles();
+    $result = $apiInstance->roleGetCompanyMembershipRoles();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoleApi->roleGetCompanyMembershipRoles: ', $e->getMessage(), PHP_EOL;
@@ -79,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\RoleDto[]**](../Model/RoleDto.md)
 
 ### Authorization
 
@@ -93,7 +101,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **roleGetGlobalRoles**
-> object roleGetGlobalRoles()
+> \Swagger\Client\Model\RoleDto[] roleGetGlobalRoles()
 
 Gets the global level roles
 
@@ -102,10 +110,14 @@ Gets the global level roles
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RoleApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->roleGetGlobalRoles();
+    $result = $apiInstance->roleGetGlobalRoles();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoleApi->roleGetGlobalRoles: ', $e->getMessage(), PHP_EOL;
@@ -118,7 +130,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\RoleDto[]**](../Model/RoleDto.md)
 
 ### Authorization
 
@@ -132,7 +144,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **roleGetVirtualOperatorMembershipRoles**
-> object roleGetVirtualOperatorMembershipRoles()
+> \Swagger\Client\Model\RoleDto[] roleGetVirtualOperatorMembershipRoles()
 
 Gets the virtual operator level roles
 
@@ -141,10 +153,14 @@ Gets the virtual operator level roles
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RoleApi(new \Http\Adapter\Guzzle6\Client());
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->roleGetVirtualOperatorMembershipRoles();
+    $result = $apiInstance->roleGetVirtualOperatorMembershipRoles();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoleApi->roleGetVirtualOperatorMembershipRoles: ', $e->getMessage(), PHP_EOL;
@@ -157,7 +173,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\RoleDto[]**](../Model/RoleDto.md)
 
 ### Authorization
 

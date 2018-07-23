@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **string** |  | [optional] 
-**password** | **string** |  | [optional] 
-**virtual_operator** | **string** |  | [optional] 
+**email** | **string** | MaxLength: 200 | 
+**password** | **string** |  | 
+**virtual_operator** | **string** | MaxLength: 60 | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,28 +4,38 @@ All URIs are relative to *https://api-einvoicing-co-qa.saphety.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**billingAttachmentsSizeCount**](BillingApi.md#billingAttachmentsSizeCount) | **POST** /api/billing/attachments | Get attachments count and size by date and issuer
-[**billingDocumentsCount**](BillingApi.md#billingDocumentsCount) | **POST** /api/billing/documents | Get outboundDocument count by date and issuer
+[**billingInboundAttachmentsSizeCount**](BillingApi.md#billingInboundAttachmentsSizeCount) | **GET** /api/billing/inbound/attachments | Get Inbound Attachments count and size by date and issuer
+[**billingInboundDocumentsCount**](BillingApi.md#billingInboundDocumentsCount) | **GET** /api/billing/inbound/documents | Get Inbound Document count by date and issuer
+[**billingOutboundAttachmentsSizeCount**](BillingApi.md#billingOutboundAttachmentsSizeCount) | **GET** /api/billing/outbound/attachments | Get Outbound Attachments count and size by date and issuer
+[**billingOutboundDocumentsCount**](BillingApi.md#billingOutboundDocumentsCount) | **GET** /api/billing/outbound/documents | Get Outbound Document count by date and issuer
 
 
-# **billingAttachmentsSizeCount**
-> object billingAttachmentsSizeCount($billing_criteria)
+# **billingInboundAttachmentsSizeCount**
+> \Swagger\Client\Model\InboundDocumentsBillingOutputDto[] billingInboundAttachmentsSizeCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field)
 
-Get attachments count and size by date and issuer
+Get Inbound Attachments count and size by date and issuer
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\BillingApi(new \Http\Adapter\Guzzle6\Client());
-$billing_criteria = new \Swagger\Client\Model\GetBillingCriteriaDTO(); // \Swagger\Client\Model\GetBillingCriteriaDTO | 
+$apiInstance = new Swagger\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$billing_criteria_creation_date_time_start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_creation_date_time_end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_offset = 56; // int | 
+$billing_criteria_number_of_records = 56; // int | 
+$billing_criteria_sort_field = "billing_criteria_sort_field_example"; // string | 
 
 try {
-    $result = $api_instance->billingAttachmentsSizeCount($billing_criteria);
+    $result = $apiInstance->billingInboundAttachmentsSizeCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->billingAttachmentsSizeCount: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->billingInboundAttachmentsSizeCount: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -34,11 +44,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **billing_criteria** | [**\Swagger\Client\Model\GetBillingCriteriaDTO**](../Model/GetBillingCriteriaDTO.md)|  |
+ **billing_criteria_creation_date_time_start** | **\DateTime**|  | [optional]
+ **billing_criteria_creation_date_time_end** | **\DateTime**|  | [optional]
+ **billing_criteria_offset** | **int**|  | [optional]
+ **billing_criteria_number_of_records** | **int**|  | [optional]
+ **billing_criteria_sort_field** | **string**|  | [optional]
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\InboundDocumentsBillingOutputDto[]**](../Model/InboundDocumentsBillingOutputDto.md)
 
 ### Authorization
 
@@ -46,29 +60,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **billingDocumentsCount**
-> object billingDocumentsCount($billing_criteria)
+# **billingInboundDocumentsCount**
+> \Swagger\Client\Model\InboundDocumentsBillingOutputDto[] billingInboundDocumentsCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field)
 
-Get outboundDocument count by date and issuer
+Get Inbound Document count by date and issuer
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\BillingApi(new \Http\Adapter\Guzzle6\Client());
-$billing_criteria = new \Swagger\Client\Model\GetBillingCriteriaDTO(); // \Swagger\Client\Model\GetBillingCriteriaDTO | 
+$apiInstance = new Swagger\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$billing_criteria_creation_date_time_start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_creation_date_time_end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_offset = 56; // int | 
+$billing_criteria_number_of_records = 56; // int | 
+$billing_criteria_sort_field = "billing_criteria_sort_field_example"; // string | 
 
 try {
-    $result = $api_instance->billingDocumentsCount($billing_criteria);
+    $result = $apiInstance->billingInboundDocumentsCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->billingDocumentsCount: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->billingInboundDocumentsCount: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -77,11 +99,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **billing_criteria** | [**\Swagger\Client\Model\GetBillingCriteriaDTO**](../Model/GetBillingCriteriaDTO.md)|  |
+ **billing_criteria_creation_date_time_start** | **\DateTime**|  | [optional]
+ **billing_criteria_creation_date_time_end** | **\DateTime**|  | [optional]
+ **billing_criteria_offset** | **int**|  | [optional]
+ **billing_criteria_number_of_records** | **int**|  | [optional]
+ **billing_criteria_sort_field** | **string**|  | [optional]
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\InboundDocumentsBillingOutputDto[]**](../Model/InboundDocumentsBillingOutputDto.md)
 
 ### Authorization
 
@@ -89,8 +115,118 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/json, text/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **billingOutboundAttachmentsSizeCount**
+> \Swagger\Client\Model\OutboundDocumentsBillingOutputDto[] billingOutboundAttachmentsSizeCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field)
+
+Get Outbound Attachments count and size by date and issuer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$billing_criteria_creation_date_time_start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_creation_date_time_end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_offset = 56; // int | 
+$billing_criteria_number_of_records = 56; // int | 
+$billing_criteria_sort_field = "billing_criteria_sort_field_example"; // string | 
+
+try {
+    $result = $apiInstance->billingOutboundAttachmentsSizeCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingApi->billingOutboundAttachmentsSizeCount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **billing_criteria_creation_date_time_start** | **\DateTime**|  | [optional]
+ **billing_criteria_creation_date_time_end** | **\DateTime**|  | [optional]
+ **billing_criteria_offset** | **int**|  | [optional]
+ **billing_criteria_number_of_records** | **int**|  | [optional]
+ **billing_criteria_sort_field** | **string**|  | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\OutboundDocumentsBillingOutputDto[]**](../Model/OutboundDocumentsBillingOutputDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **billingOutboundDocumentsCount**
+> \Swagger\Client\Model\OutboundDocumentsBillingOutputDto[] billingOutboundDocumentsCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field)
+
+Get Outbound Document count by date and issuer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$billing_criteria_creation_date_time_start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_creation_date_time_end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$billing_criteria_offset = 56; // int | 
+$billing_criteria_number_of_records = 56; // int | 
+$billing_criteria_sort_field = "billing_criteria_sort_field_example"; // string | 
+
+try {
+    $result = $apiInstance->billingOutboundDocumentsCount($billing_criteria_creation_date_time_start, $billing_criteria_creation_date_time_end, $billing_criteria_offset, $billing_criteria_number_of_records, $billing_criteria_sort_field);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingApi->billingOutboundDocumentsCount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **billing_criteria_creation_date_time_start** | **\DateTime**|  | [optional]
+ **billing_criteria_creation_date_time_end** | **\DateTime**|  | [optional]
+ **billing_criteria_offset** | **int**|  | [optional]
+ **billing_criteria_number_of_records** | **int**|  | [optional]
+ **billing_criteria_sort_field** | **string**|  | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\OutboundDocumentsBillingOutputDto[]**](../Model/OutboundDocumentsBillingOutputDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

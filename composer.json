@@ -1,5 +1,5 @@
 {
-    "name": "timemanager/tm-saphety-client",
+    "name": "timemanager/tm-swagger-client",
     "description": "Library to connect to Saphety billing API for Colombia",
     "keywords": [
         "swagger",
@@ -7,12 +7,12 @@
         "sdk",
         "api"
     ],
-    "homepage": "https://www.timemanagerweb.com/",
+    "homepage": "https://www.timemanagerweb.com",
     "license": "proprietary",
     "authors": [
         {
             "name": "Time Manager",
-            "homepage": "https://www.timemanagerweb.com/"
+            "homepage": "https://www.timemanagerweb.com"
         }
     ],
     "require": {

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **gtin** | **string** | Item identification GTIN | [optional] 
 **buyer_item_identification** | **string** | Item code assigned by buyer | [optional] 
 **seller_item_identification** | **string** | Item code assigned by seller &#x3D; SKU | [optional] 
-**manufacturer_item_identification** | **string** | Item code assigned by the manufacturer. The default value is PD | [optional] 
+**serial_number** | **string** | Serial Number | [optional] 
 **description** | **string** | Item description belonging to the invoice line | [optional] 
 **brand_name** | **string** |  | [optional] 
 **model_name** | **string** |  | [optional] 

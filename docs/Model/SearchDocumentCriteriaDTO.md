@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
-**document_number** | **string** |  | [optional] 
-**currency** | **string** |  | [optional] 
+**document_number** | **string** | MaxLength: 20 | [optional] 
+**currency** | **string** | MaxLength: 50 | [optional] 
 **company_ids** | **string[]** |  | [optional] 
 **issuers** | **string[]** |  | [optional] 
 **customers** | **string[]** |  | [optional] 
