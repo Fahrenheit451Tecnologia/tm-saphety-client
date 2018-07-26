@@ -24,7 +24,7 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
     }
   ],
   "require": {
-    "timemanager/tm-swagger-client": "*@dev"
+    "timemanager/tm-saphety-client": "*@dev"
   }
 }
 ```
