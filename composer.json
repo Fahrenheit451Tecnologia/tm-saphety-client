@@ -1,5 +1,5 @@
 {
-    "name": "timemanager/tm-swagger-client",
+    "name": "timemanager/tm-saphety-client",
     "description": "Library to connect to Saphety billing API for Colombia",
     "keywords": [
         "swagger",
