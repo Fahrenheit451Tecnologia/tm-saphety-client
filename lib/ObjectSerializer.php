@@ -289,6 +289,8 @@ class ObjectSerializer
                 throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
             }
             return $data;
+        } elseif($class=='\Swagger\Client\Model\ResultMessageString'){
+            return $data;
         } else {
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
