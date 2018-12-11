@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://api-einvoicing-co-qa.saphety.com';
+    protected $host = 'https://api-einvoicing-co.saphety.com';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
